@@ -3,7 +3,7 @@ class Solution {
         HashMap<Character, Integer> map = new HashMap<>();
         boolean success =true;
         
-        if(s.length() != t.length()) success=false;
+        if(s.length() != t.length()) return false;
         
         for(int i = 0; i < s.length(); i++){
             char ch = s.charAt(i);
