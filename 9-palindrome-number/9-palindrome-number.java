@@ -6,15 +6,12 @@ class Solution {
         if(x < 0) return false;
         
         while(x != 0){
-            int remainder = x % 10;
-            res = res*10 + remainder;
-            x = x / 10;
+            res = res*10 + x % 10;
+            x /= 10;
         }
         
 
         
-        if(temp == res) return true;
-        
-        return false;
+        return (temp == res);
     }
 }
