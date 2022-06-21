@@ -9,10 +9,6 @@ class Solution {
             int remainder = x % 10;
             res = res*10 + remainder;
             x = x / 10;
-                    System.out.print(remainder + " ");
-                    System.out.print(res + " ");
-                    System.out.print(x + " ");
-                    System.out.println();
         }
         
 
