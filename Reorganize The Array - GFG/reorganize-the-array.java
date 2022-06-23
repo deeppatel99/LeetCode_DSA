@@ -49,22 +49,44 @@ class Complete{
     
    
     // Function for finding maximum and value pair
-    public static int[] Rearrange (int A[], int n) {
+    public static int[] Rearrange (int arr[], int n) {
         // Complete the function
-        Set<Integer> s = new HashSet<>();
-        for (int i = 0; i < A.length; i++)
-        {
-            s.add(A[i]);
-        }
         
-        for(int i = 0; i < A.length; i++){
-            if(s.contains(i)){
-                A[i] = i;
-            }else{
-                A[i] = -1;
+        // Method - 1: T(n) - O(n) S(n) - O(1)
+        
+        for (int i = 0; i < arr.length;)
+        {
+            if (arr[i] >= 0 && arr[i] != i)
+            {
+                int ele = arr[arr[i]];
+                arr[arr[i]] = arr[i];
+                arr[i] = ele;
+            }
+            else
+            {
+                i++;
             }
         }
-        return A;
+        
+        return arr;
+        
+        // Method - 2: T(n) - O(nlogn) S(n) - O(n)
+        
+        
+        // Set<Integer> s = new HashSet<>();
+        // for (int i = 0; i < A.length; i++)
+        // {
+        //     s.add(A[i]);
+        // }
+        
+        // for(int i = 0; i < A.length; i++){
+        //     if(s.contains(i)){
+        //         A[i] = i;
+        //     }else{
+        //         A[i] = -1;
+        //     }
+        // }
+        // return A;
     }
     
     
