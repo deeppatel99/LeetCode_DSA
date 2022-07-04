@@ -14,14 +14,38 @@ import java.util.*;
 
 class Solution{
     
-  
+  // METHOD - 1 T(n) = O(nlogn)
+    // int maxTripletSum(int a[], int n)
+    // {
+    //     // Complete the function
+        
+    //     Arrays.sort(a);
+        
+    //     return a[n-1]+a[n-2]+a[n-3];
+    // }
+    
+
+ // METHOD - 2  T(n) = O(n)
+    
     int maxTripletSum(int a[], int n)
     {
         // Complete the function
+        int maxA = -100000000, maxB = -100000000, maxC = -100000000;
         
-        Arrays.sort(a);
+        for(int i = 0; i < n; i++){
+            if(a[i] > maxA){
+                maxC = maxB;
+                maxB = maxA;
+                maxA = a[i];
+            }else if(a[i] > maxB){
+                maxC = maxB;
+                maxB = a[i];
+            }else if(a[i] > maxC){
+                maxC = a[i];
+            }
+        }
         
-        return a[n-1]+a[n-2]+a[n-3];
+        return (maxA + maxB + maxC);
     }
   
     
