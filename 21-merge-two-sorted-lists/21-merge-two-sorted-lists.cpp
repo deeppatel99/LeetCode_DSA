@@ -10,27 +10,57 @@
  */
 class Solution {
 public:
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
         
         // Method-1 : Using External space
         
-        ListNode* newHead = new ListNode();
-        ListNode* temp = newHead;
+//         ListNode* newHead = new ListNode();
+//         ListNode* temp = newHead;
         
-        while(list1 != NULL && list2 != NULL){
-            if(list1->val >= list2->val){
-                temp->next = list2;
-                list2 = list2->next;
-            }else{
-                temp->next = list1;
-                list1 = list1->next;
-            }
-            temp = temp->next;
+//         while(list1 != NULL && list2 != NULL){
+//             if(list1->val >= list2->val){
+//                 temp->next = list2;
+//                 list2 = list2->next;
+//             }else{
+//                 temp->next = list1;
+//                 list1 = list1->next;
+//             }
+//             temp = temp->next;
+//         }
+        
+//         if(list1 != NULL) temp->next = list1;
+//         if(list2 != NULL) temp->next = list2;
+        
+//         return newHead->next;
+        
+        
+        
+        
+        
+        
+        // Method - 2 : InPlace 
+        
+        if(l1 == NULL) return l2;
+        if(l2 == NULL) return l1;
+        
+        if(l1->val > l2->val){
+            std::swap(l1,l2);
         }
         
-        if(list1 != NULL) temp->next = list1;
-        if(list2 != NULL) temp->next = list2;
+        ListNode* res = l1;
         
-        return newHead->next;
+        while(l1 != NULL && l2 != NULL){
+            ListNode* temp = NULL;
+            while(l1 != NULL && l2->val >= l1->val){
+                temp = l1;
+                l1 = l1->next;
+            }
+            
+            temp->next = l2;
+            std::swap(l1,l2);
+        }
+        
+        return res;
+        
     }
 };
